@@ -1,0 +1,53 @@
+---
+# configuration file for the vagrant setup of local development settings
+configuration:
+    # the config section to use here. You can add individual
+    # environments below 'local' and set to use them here, e.g. if you
+    # need different mem sizes for your hardware
+
+    use: 'local'
+    # configure the local environment
+    # entries can left empty to get the defaults but have to exist
+    local:
+        version: '0.1.12'
+
+        comment: 'Local revolution dev environment by SEDA.digital'
+        warning: 'Do not forget to run the transport.core.php and setup after installation!'
+
+        vm:
+            name:   'local.modx.revolution'   # REQUIRED
+            box:    # DEFAULT: ubuntu/trusty64
+            memory: # DEFAULT: 2048
+            cpu:    # DEFAULT: 2
+        # you need to add the host.name and ips.public to your hosts' host file to access them with
+        # this name in your host browser
+        host:
+            name:   'local.modx.revolution'  # REQUIRED
+        ips:
+            public: 192.168.0.42
+        ports:
+            web:    42080  # DEFAULT 60000
+            ssh:    42022  # DEFAULT 22000
+            mysql:         # DEFAULT 63306
+        settings:
+            context:
+                key: 'web'
+        modx_objects:
+        folders:
+            modx:
+                private:
+                    host: ../revolution/
+                    guest: /www/
+                public:
+                    host: ../revolution/
+                    guest: /www/
+            log:
+                host: # DEFAULT: _server/log
+                guest: # DEFAULT /vagrant/_server/log
+        software:
+            additional_packages: ''
+            mysql:  '-' # unused, always use 5.6 if possible with box version
+            apache:
+                version: # unused, default version
+                additional_mod: # e.g. setenvif
+            php:    '-'  # unused
