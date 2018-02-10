@@ -1,3 +1,4 @@
-/.vagrant/
-/_server/log/
-/_backups/
+.idea/
+.vagrant/
+_server/log/
+_backups/
